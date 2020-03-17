@@ -36,9 +36,7 @@ export default class StepOne extends Component {
             <SubmitButton onPress={() => navigation.navigate('StepTwo')}>
               <SubmitButtonText>Continuar</SubmitButtonText>
             </SubmitButton>
-
-          </Form>  
-          
+          </Form>            
         </Container>
   
     </>

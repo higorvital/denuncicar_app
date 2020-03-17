@@ -21,6 +21,7 @@ export const Input = styled.TextInput.attrs({
   height: 50px;
   padding: 0 20px;
   margin-bottom: 20px;
+  color: #fff;
 `;
 
 
@@ -44,15 +45,17 @@ export const Opcoes = styled.View`
 
 export const OpcoesButton = styled(RectButton)`
     
-    background: #0FA199;
+    background: transparent;
     align-self: stretch;
     padding: 10px 15px;
     align-items: center;
+    margin-top: 20px;
 `;
 
 export const OpcoesButtonText = styled.Text`
   color: #fff;
   justify-content: center;
   align-items: center;
+  font-size: 16px;
 `;
 

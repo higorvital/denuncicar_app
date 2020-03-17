@@ -6,9 +6,11 @@ import {StatusBar} from 'react-native';
 
 import './config/ReactotronConfig'
 
-import Routes from './routes';
+import createRouter from './routes';
 
 export default function App(){
+
+    const Routes = createRouter();
 
     return (
         <>

@@ -20,5 +20,22 @@ export const MensagemText = styled.Text`
     text-align: center;
     font-size: 18px;
     margin-top: 20px;
+  text-transform: uppercase;
+`;
+
+export const ReturnButtonText = styled.Text`
+    color: #fff;
+    text-align: center;
+    font-size: 18px;
   
+`;
+
+
+export const ReturnButton = styled(RectButton)`
+      margin-top: 30px;
+      background: #0FA199;
+      align-self: stretch;
+      padding: 10px 15px;
+      border-radius: 4px;
+      align-items: center;
 `;

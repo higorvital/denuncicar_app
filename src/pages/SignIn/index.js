@@ -7,10 +7,9 @@ import { Form,
    Container,
    SubmitButtonText,
    OpcoesButton,
-   OpcoesButtonText,
-   Opcoes } from './styles';
+   OpcoesButtonText } from './styles';
 
-export default class Login extends Component {
+export default class SingIn extends Component {
 
   static propTypes = {
     navigation: PropTypes.shape({
@@ -18,13 +17,18 @@ export default class Login extends Component {
     }).isRequired,
   }
 
-  handleNavigation = () => {
-    const {navigation} = this.props;
-
-    navigation.navigate('Menu');
+  static navigationOptions = {
+    title: 'DenunciCAR',
+    headerStyle: {
+      elevation: 0, // remove shadow on Android
+      backgroundColor: '#17D0C5',
+    }
   }
 
   render(){
+
+    const {navigation} = this.props;
+
     return (
       <>
         <Container>
@@ -32,39 +36,29 @@ export default class Login extends Component {
             <Input 
               autoCorrect={false}
               autoCaptalize="none"
-              placeholder="Login"
+              placeholder="E-mail"
+              keyboardType="email-address"
             />
             <Input 
               autoCorrect={false}
               autoCaptalize="none"
               placeholder="Senha"        
+              secureTextEntry
             />
-            <SubmitButton onPress={this.handleNavigation}>
+            <SubmitButton onPress={() => navigation.navigate('Menu')}>
               <SubmitButtonText>Login</SubmitButtonText>
             </SubmitButton>
-          </Form>
-  
+
+            <OpcoesButton onPress={() => navigation.navigate('SignUp')}>
+              <OpcoesButtonText>Cadastre-se</OpcoesButtonText>
+            </OpcoesButton>
+
+          </Form>  
           
         </Container>
   
-        <Opcoes>
-        <OpcoesButton>
-          <OpcoesButtonText>Esqueceu a senha?</OpcoesButtonText>
-        </OpcoesButton>
-        <OpcoesButton>
-          <OpcoesButtonText>Cadastre-se</OpcoesButtonText>
-        </OpcoesButton>
-        </Opcoes>
     </>
     );
   
-  }
-}
-
-Login.navigationOptions = {
-  title: 'DenunciCAR',
-  headerStyle: {
-    elevation: 0, // remove shadow on Android
-    backgroundColor: '#17D0C5',
   }
 }

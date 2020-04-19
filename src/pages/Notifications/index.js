@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import { Container,
    TitleText,
@@ -94,5 +94,5 @@ export default function Notifications() {
 
 Notifications.navigationOptions = {
   tabBarLabel: 'Notificações',
-  tabBarIcon: ({tintColor})=> <MaterialIcons name="home" color={tintColor} size={20}/>
+  tabBarIcon: ({tintColor})=> <FontAwesome name="bell" color={tintColor} size={20}/>
 }

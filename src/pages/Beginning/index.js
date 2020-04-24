@@ -1,7 +1,8 @@
-import React from 'react';
-import { View } from 'react-native';
+import React, {Component} from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import AsyncStorage from '@react-native-community/async-storage';
+import api from '../../services/api';
 
 import { Container,
    Header,
@@ -18,35 +19,73 @@ import { Container,
    ReportButton,
    ReportButtonText } from './styles';
 
-export default function Beginning({navigation}) {
-  return (
-      <Container>
-        <Header>
-          <FontAwesome name='user-circle' size={100} color='#fff'/>
-          <InfoUser>
-            <WelcomeText>bem vindo,</WelcomeText>
-            <UserName>Fulano da Silva</UserName>
-            <CarText>Ford Ka, XXX0000</CarText>
-          </InfoUser>
-        </Header>
+export default class Beginning extends Component {
 
-        <Content>
-          <Points>
-            <PointNumber>60</PointNumber>
-            <PointText>pontos de contribuição</PointText>
-          </Points>
-          <Camera>
-            <CameraCenter>
+  state = {
+    usuario: {}
+  }
 
-            </CameraCenter>
+  async componentDidMount(){
+    const user = await AsyncStorage.getItem('usuario');
+    if(user){
 
-          </Camera>
-          <ReportButton onPress={()=>navigation.navigate('StepOne')}>
-            <ReportButtonText>Denunciar</ReportButtonText>
-            </ReportButton>
-        </Content>
-      </Container>
-    );
+      const usuario = JSON.parse(user);
+
+      try {
+        const response = await api.post(`login`, {
+          email: usuario.email,
+          senha: usuario.senha
+        });
+
+        this.setState({usuario: response.data});
+
+          
+      } catch (error) {
+        console.log(error);
+        this.setState({usuario: JSON.parse(usuario)});
+      }
+    }
+  }
+
+  render(){
+
+    const {navigation} = this.props;
+    const {usuario} = this.state;
+
+    console.log(usuario.veiculos);
+
+    return (
+        <Container>
+          <Header>
+            <FontAwesome name='user-circle' size={100} color='#fff'/>
+            <InfoUser>
+              <WelcomeText>bem vindo,</WelcomeText>
+              <UserName>{usuario.nome}</UserName>
+              {usuario.veiculos && usuario.veiculos.length > 0 
+                ? <CarText>{usuario.veiculos[0].marca} {usuario.veiculos[0].modelo}, {usuario.veiculos[0].placa}</CarText> 
+                : <CarText>Sem veículo cadastrado</CarText>
+              }
+              </InfoUser>
+          </Header>
+
+          <Content>
+            <Points>
+              <PointNumber>{usuario.pontos}</PointNumber>
+              <PointText>pontos de contribuição</PointText>
+            </Points>
+            <Camera>
+              <CameraCenter>
+
+              </CameraCenter>
+
+            </Camera>
+            <ReportButton onPress={()=>navigation.navigate('StepOne')}>
+              <ReportButtonText>Denunciar</ReportButtonText>
+              </ReportButton>
+          </Content>
+        </Container>
+      );
+  }
 }
 
 Beginning.navigationOptions = {

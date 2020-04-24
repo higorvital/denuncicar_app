@@ -94,5 +94,5 @@ export default function Contributions() {
 
 Contributions.navigationOptions = {
   tabBarLabel: 'Contribuições',
-  tabBarIcon: ({tintColor})=> <MaterialIcons name="home" color={tintColor} size={20}/>
+  tabBarIcon: ({tintColor})=> <MaterialIcons name="thumb-up" color={tintColor} size={20}/>
 }

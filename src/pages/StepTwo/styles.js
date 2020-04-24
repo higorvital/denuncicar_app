@@ -9,11 +9,9 @@ export const Container = styled.View`
 `;
 
 
-export const Form = styled.ScrollView.attrs({
-  showsVerticalScrollIndicator: false,
-})`
-
-`
+export const Form = styled.View`
+    padding: 100px 0;
+`;
 
 export const Input = styled.TextInput.attrs({
     placeholderTextColor: '#fff'
@@ -21,16 +19,6 @@ export const Input = styled.TextInput.attrs({
   border: 1px solid #fff;
   border-radius: 4px;
   height: 50px;
-  padding: 0 20px;
-  margin-bottom: 20px;
-  color: #fff;
-`;
-
-export const TextArea = styled.TextInput.attrs({
-  placeholderTextColor: '#fff'
-})`
-  border: 1px solid #fff;
-  border-radius: 4px;
   padding: 0 20px;
   margin-bottom: 20px;
   color: #fff;
@@ -51,23 +39,23 @@ export const SubmitButtonText = styled.Text`
   align-items: center;
 `;
 
-export const SectionText = styled.Text`
-
-  font-size: 14px;
-  border-bottom-width: 2px;
-  border-color: #fff;
-  color: #fff;
-  margin-bottom: 3px;
-  text-align: center;
-  padding-bottom: 5px;
+export const Opcoes = styled.View`
 
 `
 
-export const DescriptionText = styled.Text`
+export const OpcoesButton = styled(RectButton)`
+    
+    background: transparent;
+    align-self: stretch;
+    padding: 10px 15px;
+    align-items: center;
+    margin-top: 20px;
+`;
 
-  font-size: 12px;
+export const OpcoesButtonText = styled.Text`
   color: #fff;
-  margin-bottom: 20px;
-  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+`;
 
-`

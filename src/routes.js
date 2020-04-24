@@ -4,15 +4,15 @@ import {createStackNavigator} from 'react-navigation-stack';
 
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SingUp';
-import About from './pages/About';
 import Contributions from './pages/Contributions';
 import Notifications from './pages/Notifications';
 import Beginning from './pages/Beginning';
 import StepOne from './pages/StepOne';
 import StepTwo from './pages/StepTwo';
 import Success from './pages/Success';
+import RegisterVehicle from './pages/RegisterVehicle';
 
-export default (isSigned=true) => createAppContainer(
+export default (isSigned=false) => createAppContainer(
     createSwitchNavigator({
         Sign: createSwitchNavigator({
             SignIn,
@@ -23,7 +23,7 @@ export default (isSigned=true) => createAppContainer(
             Beginning,
             Contributions,
             Notifications,
-            About,
+            RegisterVehicle
         },
         {
             tabBarOptions: {
@@ -36,8 +36,8 @@ export default (isSigned=true) => createAppContainer(
             }
         }),
         Report: createStackNavigator({
-            StepOne,
             StepTwo,
+            StepOne,
         },
         {
             defaultNavigationOptions: {

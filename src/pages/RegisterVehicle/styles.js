@@ -34,7 +34,6 @@ export const SubmitButton = styled(RectButton)`
       padding: 10px 15px;
       border-radius: 4px;
       align-items: center;
-      margin-bottom: 10px;
 `;
 
 export const SubmitButtonText = styled.Text`
